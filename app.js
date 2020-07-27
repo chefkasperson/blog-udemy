@@ -40,7 +40,11 @@ app.get("/posts/:postName", function(req, res) {
   posts.forEach(function(post) {
     const postTitle = _.kebabCase(post.title)
     if (postTitle === paramsName) {
-      console.log("Match Found!")
+      console.log('match')
+      res.render("post", {post: {
+        title: post.title,
+        body: post.body
+      }})
     } else {
       console.log('Match Not Found!')
     }
