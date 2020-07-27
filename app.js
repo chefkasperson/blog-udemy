@@ -36,9 +36,9 @@ app.post('/compose', function(req, res) {
 })
 
 app.get("/posts/:postName", function(req, res) {
-  const paramsName = req.params.postName
+  const paramsName = _.lowerCase(req.params.postName)
   posts.forEach(function(post) {
-    const postTitle = _.kebabCase(post.title)
+    const postTitle = _.lowerCase(post.title)
     if (postTitle === paramsName) {
       console.log('match')
       res.render("post", {post: {
